@@ -89,7 +89,7 @@ export default function Button({
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <Text {...commonProps}>{text}</Text>
+          <Text {...commonProps} text={text} />
         )}
       </TextContainer>
     </Pressable>

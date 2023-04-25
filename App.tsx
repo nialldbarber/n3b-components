@@ -1,9 +1,18 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { useFonts } from 'expo-font'
 import { Button } from './src/components/Button'
 
 const Div = () => <View style={{ marginVertical: 20 }} />
 
 export default function App() {
+  const [loadedFonts] = useFonts({
+    'Cosmica-Bold': require('./src/assets/fonts/Cosmica-Bold.otf'),
+  })
+
+  if (!loadedFonts) {
+    return null
+  }
+
   return (
     <ScrollView>
       <View style={styles.container}>
