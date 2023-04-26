@@ -16,24 +16,16 @@ export default function App() {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text>
-          Open up App.tsx to start working on your app!
-        </Text>
-        <Button text="hello world!" size="xlarge" />
+        <Button size="large">Hello world!</Button>
         <Div />
-        <Button text="hello world!" size="medium" />
+        <Button variant="secondary">hello</Button>
         <Div />
-        <Button text="hello world!" size="large" />
-        <Div />
-        <Button text="hello world!" />
-        <Div />
-        <Button text="hello" variant="secondary" />
-        <Div />
-        <Button text="hello" variant="tertiary" />
+        <Button variant="tertiary">hello</Button>
         <Div />
         <Button disabled style={{ flex: 10 }} />
         <Div />
         <Button isLoading />
+        <Button isLoading variant="secondary" />
       </View>
     </ScrollView>
   )

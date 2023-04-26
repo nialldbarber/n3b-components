@@ -1,31 +1,41 @@
 import React, { useEffect, useRef } from 'react'
+import { Animated, Easing, ViewProps } from 'react-native'
+import type { Size, Variant } from '@olio/types'
 import {
-  Animated,
-  Easing,
-  StyleSheet,
-  View,
-  ViewProps,
-} from 'react-native'
-import type { Size } from '@olio/types'
+  Container,
+  Spinner,
+} from '@olio/components/LoadingSpinner/styles'
 
 export interface LoadingSpinnerProps extends ViewProps {
   /**
    * @description
-   * The defined size of a button: a button will
-   * always span the width of it's available space
-   * (unless overriden). Defining the size will
-   * also affect the size of the button text
+   * The defined size of a loading spinner
    * @default standard
    * @example
    * ```tsx
-   * <Button size="large" />
+   * <LoadingSpinner size="large" />
    * ```
    */
   size?: Size
+  /**
+   * @description
+   * The colour variant of the loading
+   * spinner
+   * @default primary
+   * @example
+   * ```tsx
+   * // The default case 👇
+   * <LoadingSpinner variant="primary" />
+   * <LoadingSpinner variant="secondary" />
+   * <LoadingSpinner variant="tertiary" />
+   * ```
+   */
+  variant?: Variant
 }
 
 export default function LoadingSpinner({
   size = 'standard',
+  variant = 'primary',
 }: LoadingSpinnerProps) {
   const spinningValue = useRef(new Animated.Value(0)).current
 
@@ -33,7 +43,7 @@ export default function LoadingSpinner({
     Animated.loop(
       Animated.timing(spinningValue, {
         toValue: 1,
-        duration: 1000,
+        duration: 800,
         easing: Easing.linear,
         useNativeDriver: true,
       }),
@@ -46,28 +56,12 @@ export default function LoadingSpinner({
   })
 
   return (
-    <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.circle,
-          { transform: [{ rotate: spin }] },
-        ]}
+    <Container>
+      <Spinner
+        size={size}
+        variant={variant}
+        style={{ transform: [{ rotate: spin }] }}
       />
-    </View>
+    </Container>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  circle: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    borderWidth: 5,
-    borderColor: 'white',
-    borderLeftColor: 'transparent',
-  },
-})

@@ -2,23 +2,13 @@ import type { ReactNode } from 'react'
 import type { PressableProps } from 'react-native'
 import {
   Pressable,
-  Text,
+  ButtonText,
   TextContainer,
 } from '@olio/components/Button/styles'
 import type { Size, Variant } from '@olio/types'
 import { LoadingSpinner } from '@olio/components/LoadingSpinner'
 
 export interface PressableProp extends PressableProps {
-  /**
-   * @description
-   * The text value of the button, use this
-   * if you are not using the children prop
-   * @example
-   * ```tsx
-   * <Button text="hello world!" />
-   * ```
-   */
-  text?: string
   /**
    * @description
    * The defined size of a button: a button will
@@ -32,18 +22,6 @@ export interface PressableProp extends PressableProps {
    * ```
    */
   size?: Size
-  /**
-   * @description
-   * The children value of the button, use this
-   * if you are not using the text prop
-   * @example
-   * ```tsx
-   * <Button>
-   *  <Text>Lorem Ipsum...</Text>
-   * </Button>
-   * ```
-   */
-  children?: ReactNode
   /**
    * @description
    * The colour variant of the button
@@ -69,10 +47,22 @@ export interface PressableProp extends PressableProps {
    * ```
    */
   isLoading?: boolean
+  /**
+   * @description
+   * The children value of the button, use this
+   * if you are not using the text prop
+   * @example
+   * ```tsx
+   * <Button>
+   *  <Text>Lorem Ipsum...</Text>
+   * </Button>
+   * ```
+   */
+  children?: ReactNode
 }
 
 export default function Button({
-  text,
+  children,
   variant = 'primary',
   size = 'standard',
   isLoading = false,
@@ -87,9 +77,9 @@ export default function Button({
     <Pressable {...commonProps} {...props}>
       <TextContainer variant={variant}>
         {isLoading ? (
-          <LoadingSpinner />
+          <LoadingSpinner {...commonProps} />
         ) : (
-          <Text {...commonProps} text={text} />
+          <ButtonText {...commonProps}>{children}</ButtonText>
         )}
       </TextContainer>
     </Pressable>

@@ -5,7 +5,7 @@ import { colors } from '@olio/color/palettes'
 import { heights } from '@olio/layout/size'
 import { fontSizes } from '@olio/typography/font-sizes'
 import { getDynamicStyles } from '@olio/helpers'
-import { Text as SText } from '@olio/components/Text'
+import { Text } from '@olio/components/Text'
 import type { Mapping } from '@olio/helpers'
 import type { PressableProp } from '@olio/components/Button/Button'
 
@@ -100,12 +100,11 @@ export const Pressable = styled.Pressable<PressableProp>`
 type TextContainerProps = Pick<PressableProp, 'variant'>
 export const TextContainer = styled.View<TextContainerProps>`
   align-items: center;
-  align-self: flex-start;
-  /* background-color: red; */
+  /* align-self: flex-start; */
+  align-self: center;
 `
 
-export const Text = styled(SText)<PressableProp>`
-  color: red;
+export const ButtonText = styled(Text)<PressableProp>`
   align-self: center;
   font-weight: ${fontWeights.semibold};
   ${({ size }) =>
