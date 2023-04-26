@@ -4,7 +4,10 @@ import type { Size, Variant } from '@olio/types'
 import { colors } from '@olio/color/palettes'
 import { heights, radius } from '@olio/layout/size'
 import { fontSizes } from '@olio/typography/font-sizes'
-import { getDynamicStyles } from '@olio/helpers'
+import {
+  createVariantStyles,
+  getDynamicStyles,
+} from '@olio/helpers'
 import { Text } from '@olio/components/Text'
 import type { Mapping } from '@olio/helpers'
 import type { PressableProp } from '@olio/components/Button/Button'
@@ -46,21 +49,20 @@ const sizeMapping: Mapping<Size> = {
 /**
  * Addtional css
  */
-const buttonStyles: { [K in Variant]: ReturnType<typeof css> } =
-  {
-    primary: css`
-      background-color: ${colors.core.primary};
-    `,
-    secondary: css`
-      background-color: ${colors.core.white};
-      border: 2px solid ${colors.core.primary};
-    `,
-    tertiary: css`
-      background-color: ${colors.core.white};
-    `,
-  }
+const buttonStyles = createVariantStyles({
+  primary: css`
+    background-color: ${colors.core.primary};
+  `,
+  secondary: css`
+    background-color: ${colors.core.white};
+    border: 2px solid ${colors.core.primary};
+  `,
+  tertiary: css`
+    background-color: ${colors.core.white};
+  `,
+})
 
-const textStyles: { [K in Variant]: ReturnType<typeof css> } = {
+const textStyles = createVariantStyles({
   primary: css`
     color: ${colors.core.white};
   `,
@@ -73,7 +75,7 @@ const textStyles: { [K in Variant]: ReturnType<typeof css> } = {
     text-decoration-color: ${colors.core.primary};
     padding-bottom: 10px;
   `,
-}
+})
 
 const disabledButton = css`
   opacity: 0.5;

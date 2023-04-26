@@ -1,4 +1,5 @@
-import type { Size } from '@olio/types'
+import type { Size, Variant } from '@olio/types'
+import { css } from 'styled-components/native'
 
 export type Mapping<T extends keyof any> = {
   [key in T]?: {
@@ -34,4 +35,25 @@ export const getDynamicStyles = (
     ''
 
   return `${property}: ${value}${unit || ''}}`
+}
+
+/**
+ * This returns an object of variant
+ * styled-components `css` styles
+ * 
+ * - Example usage
+ * ```ts
+  const buttonStyles = createVariantStyles({
+    primary: css``,
+    secondary: css``,
+    tertiary: css``,
+  })
+ * ```
+ */
+export const createVariantStyles = <
+  T extends Record<Variant, ReturnType<typeof css>>,
+>(
+  styles: T,
+): T => {
+  return styles
 }
