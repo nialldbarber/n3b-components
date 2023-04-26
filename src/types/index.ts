@@ -1,4 +1,5 @@
 export type Variant = 'primary' | 'secondary' | 'tertiary'
+
 export type Size =
   | 'xsmall'
   | 'small'
@@ -7,3 +8,5 @@ export type Size =
   | 'large'
   | 'xlarge'
   | 'xxlarge'
+
+export type Alignment = 'left' | 'center' | 'right'

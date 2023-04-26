@@ -44,7 +44,7 @@ export default function LoadingSpinner({
     Animated.loop(
       Animated.timing(spinningValue, {
         toValue: 1,
-        duration: 800,
+        duration: 600,
         easing: Easing.linear,
         useNativeDriver: true,
       }),

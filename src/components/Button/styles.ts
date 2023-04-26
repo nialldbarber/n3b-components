@@ -1,55 +1,19 @@
 import styled, { css } from 'styled-components/native'
 import { fontWeights } from '@olio/typography/font-weights'
-import type { Size, Variant } from '@olio/types'
+import type { Variant } from '@olio/types'
 import { colors } from '@olio/color/palettes'
-import { heights, radius } from '@olio/layout/size'
+import { heights, radius, spacing } from '@olio/layout/size'
 import { fontSizes } from '@olio/typography/font-sizes'
-import {
-  createVariantStyles,
-  getDynamicStyles,
-} from '@olio/helpers'
+import { createStrictStyles } from '@olio/helpers'
 import { Text } from '@olio/components/Text'
-import type { Mapping } from '@olio/helpers'
 import type { PressableProp } from '@olio/components/Button/Button'
 
-/**
- * Helpers
- */
-const sizeMapping: Mapping<Size> = {
-  xsmall: {
-    height: heights['15px'],
-    fontSize: fontSizes['5px'],
-  },
-  small: {
-    height: heights['25px'],
-    fontSize: fontSizes['10px'],
-  },
-  medium: {
-    height: heights['36px'],
-    fontSize: fontSizes['14px'],
-  },
-  standard: {
-    height: heights['50px'],
-    fontSize: fontSizes['18px'],
-  },
-  large: {
-    height: heights['62px'],
-    fontSize: fontSizes['22px'],
-  },
-  xlarge: {
-    height: heights['75px'],
-    fontSize: fontSizes['26px'],
-  },
-  xxlarge: {
-    height: heights['87px'],
-    fontSize: fontSizes['30px'],
-  },
-}
+type TextContainerProps = Pick<PressableProp, 'variant'>
 
 /**
  * Addtional css
  */
-const buttonStyles = createVariantStyles({
+const buttonStyles = createStrictStyles<Variant>({
   primary: css`
     background-color: ${colors.core.primary};
   `,
@@ -62,7 +26,7 @@ const buttonStyles = createVariantStyles({
   `,
 })
 
-const textStyles = createVariantStyles({
+const textStyles = createStrictStyles<Variant>({
   primary: css`
     color: ${colors.core.white};
   `,
@@ -71,9 +35,7 @@ const textStyles = createVariantStyles({
   `,
   tertiary: css`
     color: ${colors.core.primary};
-    text-decoration: underline;
-    text-decoration-color: ${colors.core.primary};
-    padding-bottom: 10px;
+    padding-bottom: ${heights['3px']}px;
   `,
 })
 
@@ -85,31 +47,31 @@ const disabledButton = css`
  * Components
  */
 export const Pressable = styled.Pressable<PressableProp>`
-  align-self: stretch;
+  align-self: ${({ size }) =>
+    size === 'full' ? 'stretch' : 'flex-start'};
   justify-content: center;
-  justify-content: center;
+  align-items: center;
   border-radius: ${radius['50px']}px;
-  ${({ size }) =>
-    css`
-      ${getDynamicStyles(size, 'height', sizeMapping, 'px')}
-    `};
+  height: ${heights['50px']}px;
+  padding-left: ${spacing['25px']}px;
+  padding-right: ${spacing['25px']}px;
   ${({ variant }) => buttonStyles[variant as Variant]};
   ${({ disabled }) => disabled && disabledButton};
 `
 
-type TextContainerProps = Pick<PressableProp, 'variant'>
 export const TextContainer = styled.View<TextContainerProps>`
-  align-items: center;
-  /* align-self: flex-start; */
-  align-self: center;
+  margin-bottom: ${heights['1px']}px;
+`
+
+export const Underline = styled.View`
+  height: ${heights['2px']}px;
+  background-color: ${colors.core.primary};
 `
 
 export const ButtonText = styled(Text)<PressableProp>`
   align-self: center;
   font-weight: ${fontWeights.semibold};
-  ${({ size }) =>
-    css`
-      ${getDynamicStyles(size, 'fontSize', sizeMapping, 'px')}
-    `};
+  font-family: 'Plus-Jakarta-Sans-Semi-Bold';
+  font-size: ${fontSizes['18px']}px;
   ${({ variant }) => textStyles[variant as Variant]};
 `

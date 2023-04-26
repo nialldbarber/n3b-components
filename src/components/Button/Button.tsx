@@ -4,31 +4,18 @@ import {
   Pressable,
   ButtonText,
   TextContainer,
+  Underline,
 } from '@olio/components/Button/styles'
-import type { Size, Variant } from '@olio/types'
+import type { Alignment, Variant } from '@olio/types'
 import { LoadingSpinner } from '@olio/components/LoadingSpinner'
 
 export interface PressableProp extends PressableProps {
-  /**
-   * @description
-   * The defined size of a button: a button will
-   * always span the width of it's available space
-   * (unless overriden). Defining the size will
-   * also affect the size of the button text
-   * @default standard
-   * @example
-   * ```tsx
-   * <Button size="large" />
-   * ```
-   */
-  size?: Size
   /**
    * @description
    * The colour variant of the button
    * @default primary
    * @example
    * ```tsx
-   * // The default case 👇
    * <Button variant="primary" />
    * <Button variant="secondary" />
    * <Button variant="tertiary" />
@@ -49,6 +36,33 @@ export interface PressableProp extends PressableProps {
   isLoading?: boolean
   /**
    * @description
+   * The vertical alignment of the
+   * button
+   * @default left
+   * @example
+   * ```tsx
+   * <Button align="center" />
+   * <Button align="right" />
+   * ```
+   */
+  align?: Alignment
+  /**
+   * @description
+   * The size the button spans.
+   * By default, the button will fill
+   * available space it has. Contain
+   * will span the size of it's inner
+   * contents
+   * @default full
+   * @example
+   * ```tsx
+   * <Button size="full" />
+   * <Button size="contain" />
+   * ```
+   */
+  size?: 'full' | 'contain'
+  /**
+   * @description
    * The children value of the button, use this
    * if you are not using the text prop
    * @example
@@ -58,28 +72,36 @@ export interface PressableProp extends PressableProps {
    * </Button>
    * ```
    */
-  children?: ReactNode
+  children: ReactNode
 }
 
 export default function Button({
   children,
   variant = 'primary',
-  size = 'standard',
+  align = 'left',
+  size = 'full',
   isLoading = false,
   ...rest
 }: PressableProp) {
   const commonProps = {
     variant,
-    size,
     isLoading,
   }
   return (
-    <Pressable {...commonProps} {...rest}>
+    <Pressable
+      align={align}
+      size={size}
+      {...commonProps}
+      {...rest}
+    >
       <TextContainer variant={variant}>
         {isLoading ? (
           <LoadingSpinner {...commonProps} />
         ) : (
-          <ButtonText {...commonProps}>{children}</ButtonText>
+          <>
+            <ButtonText {...commonProps}>{children}</ButtonText>
+            {variant === 'tertiary' && <Underline />}
+          </>
         )}
       </TextContainer>
     </Pressable>

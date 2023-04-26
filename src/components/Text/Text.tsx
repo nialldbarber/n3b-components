@@ -2,6 +2,16 @@ import type { TextProps } from 'react-native'
 import type { Size, Variant } from '@olio/types'
 import { Text as SText } from '@olio/components/Text/styles'
 
+type Typography =
+  | 'display'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'body'
+  | 'label'
+  | 'caption'
+
 export interface TextProp extends TextProps {
   /**
    * @description
@@ -22,13 +32,23 @@ export interface TextProp extends TextProps {
    * @default primary
    * @example
    * ```tsx
-   * // The default case 👇
    * <Text variant="primary" />
    * <Text variant="secondary" />
    * <Text variant="tertiary" />
    * ```
    */
   variant?: Variant
+  /**
+   * @description
+   * The font size of the text
+   * @default body
+   * @example
+   * ```tsx
+   * <Text level="body" />
+   * <Text level="h3" />
+   * ```
+   */
+  level?: Typography
 }
 
 export default function Text({

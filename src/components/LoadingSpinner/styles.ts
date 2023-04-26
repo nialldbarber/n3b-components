@@ -23,8 +23,8 @@ const sizeMapping: Mapping<Size> = {
     height: heights['36px'],
   },
   standard: {
-    width: heights['30px'],
-    height: heights['30px'],
+    width: heights['25px'],
+    height: heights['25px'],
   },
   large: {
     width: heights['62px'],
@@ -67,6 +67,6 @@ export const Spinner = styled(Animated.View)<LoadingSpinnerProps>`
   ${({ variant }) =>
     variant === 'secondary' && secondarySpinner};
   border-radius: 50px;
-  border-width: 4px;
+  border-width: 3px;
   border-left-color: transparent;
 `
