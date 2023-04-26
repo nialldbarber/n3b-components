@@ -53,9 +53,8 @@ export const Container = styled.View`
   align-items: center;
 `
 
-export const Spinner = styled(
-  Animated.View,
-)<LoadingSpinnerProps>`
+/* prettier-ignore */
+export const Spinner = styled(Animated.View)<LoadingSpinnerProps>`
   ${({ size }) =>
     css`
       ${getDynamicStyles(size, 'width', sizeMapping, 'px')}
@@ -67,7 +66,7 @@ export const Spinner = styled(
   ${({ variant }) => variant === 'primary' && primarySpinner};
   ${({ variant }) =>
     variant === 'secondary' && secondarySpinner};
-  border-radius: 25px;
+  border-radius: 50px;
   border-width: 4px;
   border-left-color: transparent;
 `

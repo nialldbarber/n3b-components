@@ -66,7 +66,7 @@ export default function Button({
   variant = 'primary',
   size = 'standard',
   isLoading = false,
-  ...props
+  ...rest
 }: PressableProp) {
   const commonProps = {
     variant,
@@ -74,7 +74,7 @@ export default function Button({
     isLoading,
   }
   return (
-    <Pressable {...commonProps} {...props}>
+    <Pressable {...commonProps} {...rest}>
       <TextContainer variant={variant}>
         {isLoading ? (
           <LoadingSpinner {...commonProps} />

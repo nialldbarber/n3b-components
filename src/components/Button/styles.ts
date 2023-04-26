@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components/native'
 import { fontWeights } from '@olio/typography/font-weights'
-import type { Size } from '@olio/types'
+import type { Size, Variant } from '@olio/types'
 import { colors } from '@olio/color/palettes'
-import { heights } from '@olio/layout/size'
+import { heights, radius } from '@olio/layout/size'
 import { fontSizes } from '@olio/typography/font-sizes'
 import { getDynamicStyles } from '@olio/helpers'
 import { Text } from '@olio/components/Text'
@@ -46,34 +46,34 @@ const sizeMapping: Mapping<Size> = {
 /**
  * Addtional css
  */
-// Primary
-const primaryButton = css`
-  background-color: ${colors.core.primary};
-`
+const buttonStyles: { [K in Variant]: ReturnType<typeof css> } =
+  {
+    primary: css`
+      background-color: ${colors.core.primary};
+    `,
+    secondary: css`
+      background-color: ${colors.core.white};
+      border: 2px solid ${colors.core.primary};
+    `,
+    tertiary: css`
+      background-color: ${colors.core.white};
+    `,
+  }
 
-const primaryText = css`
-  color: ${colors.core.white};
-`
-// Primary
-const secondaryButton = css`
-  background-color: ${colors.core.white};
-  border: 2px solid ${colors.core.primary};
-`
-
-const secondaryText = css`
-  color: ${colors.core.primary};
-`
-// Tertiary
-const tertiaryButton = css`
-  background-color: ${colors.core.white};
-`
-
-const tertiaryText = css`
-  color: ${colors.core.primary};
-  text-decoration: underline;
-  text-decoration-color: ${colors.core.primary};
-  padding-bottom: 10px;
-`
+const textStyles: { [K in Variant]: ReturnType<typeof css> } = {
+  primary: css`
+    color: ${colors.core.white};
+  `,
+  secondary: css`
+    color: ${colors.core.primary};
+  `,
+  tertiary: css`
+    color: ${colors.core.primary};
+    text-decoration: underline;
+    text-decoration-color: ${colors.core.primary};
+    padding-bottom: 10px;
+  `,
+}
 
 const disabledButton = css`
   opacity: 0.5;
@@ -86,14 +86,12 @@ export const Pressable = styled.Pressable<PressableProp>`
   align-self: stretch;
   justify-content: center;
   justify-content: center;
-  border-radius: 50px;
+  border-radius: ${radius['50px']}px;
   ${({ size }) =>
     css`
       ${getDynamicStyles(size, 'height', sizeMapping, 'px')}
     `};
-  ${({ variant }) => variant === 'primary' && primaryButton};
-  ${({ variant }) => variant === 'secondary' && secondaryButton};
-  ${({ variant }) => variant === 'tertiary' && tertiaryButton};
+  ${({ variant }) => buttonStyles[variant as Variant]};
   ${({ disabled }) => disabled && disabledButton};
 `
 
@@ -111,7 +109,5 @@ export const ButtonText = styled(Text)<PressableProp>`
     css`
       ${getDynamicStyles(size, 'fontSize', sizeMapping, 'px')}
     `};
-  ${({ variant }) => variant === 'primary' && primaryText};
-  ${({ variant }) => variant === 'secondary' && secondaryText};
-  ${({ variant }) => variant === 'tertiary' && tertiaryText};
+  ${({ variant }) => textStyles[variant as Variant]};
 `

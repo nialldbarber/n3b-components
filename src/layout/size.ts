@@ -19,6 +19,10 @@ export const heights = {
   '87px': 87,
 } as const
 
+export const radius = {
+  '50px': 50,
+} as const
+
 type CustomSize = { custom: number }
 export type Width = keyof typeof widths | CustomSize
 export type Height = keyof typeof heights | CustomSize

@@ -27,7 +27,7 @@ export interface LoadingSpinnerProps extends ViewProps {
    * // The default case 👇
    * <LoadingSpinner variant="primary" />
    * <LoadingSpinner variant="secondary" />
-   * <LoadingSpinner variant="tertiary" />
+   * <LoadingSpinner variant="tertiary" / >
    * ```
    */
   variant?: Variant
@@ -36,6 +36,7 @@ export interface LoadingSpinnerProps extends ViewProps {
 export default function LoadingSpinner({
   size = 'standard',
   variant = 'primary',
+  ...rest
 }: LoadingSpinnerProps) {
   const spinningValue = useRef(new Animated.Value(0)).current
 
@@ -56,7 +57,7 @@ export default function LoadingSpinner({
   })
 
   return (
-    <Container>
+    <Container {...rest}>
       <Spinner
         size={size}
         variant={variant}
