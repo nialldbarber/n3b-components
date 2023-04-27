@@ -10,15 +10,17 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useFonts } from 'expo-font'
 import { Button } from './src/components/Button'
 import { Text } from './src/components/Text'
+import { Label } from './src/components/Label'
 
 type RootStackParamList = {
   Home: undefined
   Buttons: undefined
+  Labels: undefined
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
-const Div = () => <View style={{ marginVertical: 20 }} />
+const Div = () => <View style={{ marginVertical: 10 }} />
 const Btn = ({ children, onPress }: any) => (
   <Pressable
     style={{
@@ -50,6 +52,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Buttons" component={ButtonScreen} />
+        <Stack.Screen name="Labels" component={LabelScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -60,6 +63,9 @@ const HomeScreen = ({ navigation }: any) => {
     <ScrollView>
       <Btn onPress={() => navigation.navigate('Buttons')}>
         Buttons
+      </Btn>
+      <Btn onPress={() => navigation.navigate('Labels')}>
+        Labels
       </Btn>
     </ScrollView>
   )
@@ -86,6 +92,23 @@ const ButtonScreen = () => {
         >
           hello
         </Button>
+      </View>
+    </ScrollView>
+  )
+}
+
+const LabelScreen = () => {
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>Labels</Text>
+        <Label status="success" label="Success!" />
+        <Div />
+        <Label status="alert" label="Alert!" />
+        <Div />
+        <Label status="error" label="Error!" />
+        <Div />
+        <Label status="warning" label="Warning!" />
       </View>
     </ScrollView>
   )

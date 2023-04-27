@@ -63,12 +63,11 @@ export interface PressableProp extends PressableProps {
   size?: 'full' | 'contain'
   /**
    * @description
-   * The children value of the button, use this
-   * if you are not using the text prop
+   * The children value of the button
    * @example
    * ```tsx
    * <Button>
-   *  <Text>Lorem Ipsum...</Text>
+   *   <Text>Lorem Ipsum...</Text>
    * </Button>
    * ```
    */
