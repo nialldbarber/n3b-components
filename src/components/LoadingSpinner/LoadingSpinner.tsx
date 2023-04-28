@@ -24,7 +24,6 @@ export interface LoadingSpinnerProps extends ViewProps {
    * @default primary
    * @example
    * ```tsx
-   * // The default case 👇
    * <LoadingSpinner variant="primary" />
    * <LoadingSpinner variant="secondary" />
    * <LoadingSpinner variant="tertiary" / >
@@ -44,7 +43,7 @@ export default function LoadingSpinner({
     Animated.loop(
       Animated.timing(spinningValue, {
         toValue: 1,
-        duration: 600,
+        duration: 500,
         easing: Easing.linear,
         useNativeDriver: true,
       }),
@@ -61,7 +60,7 @@ export default function LoadingSpinner({
       <Spinner
         size={size}
         variant={variant}
-        style={{ transform: [{ rotate: spin }] }}
+        style={[{ transform: [{ rotate: spin }] }]}
       />
     </Container>
   )

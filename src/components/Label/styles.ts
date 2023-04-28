@@ -3,10 +3,10 @@ import type { LabelProps } from '@olio/components/Label/Label'
 import { Text } from '@olio/components/Text'
 import { colors } from '@olio/color/palettes'
 import type { System } from '@olio/color/palettes'
-import { createStrictStyles } from '@olio/helpers'
+import { createStyleVariants } from '@olio/helpers'
 import { fontSizes } from '@olio/typography/font-sizes'
 
-const labelBackground = createStrictStyles<System>({
+const labelBackground = createStyleVariants<System>({
   success: css`
     background-color: ${colors.system.success};
   `,
@@ -21,7 +21,7 @@ const labelBackground = createStrictStyles<System>({
   `,
 })
 
-const labelText = createStrictStyles<System>({
+const labelText = createStyleVariants<System>({
   success: css`
     color: ${colors.core.white};
   `,

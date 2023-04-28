@@ -3,6 +3,12 @@
 ## Showing Components
   - [ ] Add React Navigation?
 
+## Skeleton Loader
+  - [ ] 
+
+## Card
+  - [ ] 
+
 ## Button
   - [x] Underline button 'tertiary'
   - [ ] Button sizes? Are they correct? (need scaling)

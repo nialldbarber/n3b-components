@@ -9,14 +9,12 @@ import {
 } from '@olio/components/Label/styles'
 
 /**
-  export type ContainerPropTypes = {
-    children: React.Node,
-    collected: boolean,
+  type Props = {|
+    label: any,
     status: string,
-    label: string,
+    collected: boolean,
     inLargeCard?: boolean,
-    ...ViewType,
-  }
+  |}
  */
 
 export interface LabelProps extends ViewProps {

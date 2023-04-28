@@ -38,21 +38,25 @@ export const getDynamicStyles = (
 }
 
 /**
- * This returns an object of variant
- * styled-components `css` styles
+ * Use this for different flavours 
+ * of the same style. For instance,
+ * use this when you want to generate
+ * styles for 'primary', 'secondary' 
+ * or 'tertiary'; and use a pre-defined
+ * type to map it
  * 
  * - Example usage
  * ```ts
  * type T = 'primary' | 'secondary' | 'tertiary'
  * 
-  const buttonStyles = createStrictStyles<T>({
+  const buttonStyles = createStyleVariants<T>({
     primary: css``,
     secondary: css``,
     tertiary: css``,
   })
  * ```
  */
-export const createStrictStyles = <K extends string>(
+export const createStyleVariants = <K extends string>(
   styles: Record<K, ReturnType<typeof css>>,
 ): Record<K, ReturnType<typeof css>> => {
   return styles

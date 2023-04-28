@@ -4,8 +4,8 @@ import type { Variant } from '@olio/types'
 import { colors } from '@olio/color/palettes'
 import { heights, radius, spacing } from '@olio/layout/size'
 import { fontSizes } from '@olio/typography/font-sizes'
-import { createStrictStyles } from '@olio/helpers'
 import { Text } from '@olio/components/Text'
+import { createStyleVariants } from '@olio/helpers'
 import type { PressableProp } from '@olio/components/Button/Button'
 
 type TextContainerProps = Pick<PressableProp, 'variant'>
@@ -13,7 +13,7 @@ type TextContainerProps = Pick<PressableProp, 'variant'>
 /**
  * Addtional css
  */
-const buttonStyles = createStrictStyles<Variant>({
+const buttonStyles = createStyleVariants<Variant>({
   primary: css`
     background-color: ${colors.core.primary};
   `,
@@ -26,7 +26,7 @@ const buttonStyles = createStrictStyles<Variant>({
   `,
 })
 
-const textStyles = createStrictStyles<Variant>({
+const textStyles = createStyleVariants<Variant>({
   primary: css`
     color: ${colors.core.white};
   `,
