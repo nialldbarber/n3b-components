@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components/native'
 import { fontWeights } from '@olio/typography/font-weights'
-import type { Variant } from '@olio/types'
+import type {
+  Alignment,
+  ButtonWidth,
+  Variant,
+} from '@olio/types'
 import { colors } from '@olio/color/palettes'
 import { heights, radius, spacing } from '@olio/layout/size'
 import { fontSizes } from '@olio/typography/font-sizes'
@@ -46,15 +50,39 @@ const disabledButton = css`
 /**
  * Components
  */
+
+const alignStyles = createStyleVariants<Alignment>({
+  left: css`
+    align-self: flex-start;
+  `,
+  center: css`
+    flex-direction: row;
+    justify-content: center;
+  `,
+  right: css`
+    flex-direction: row;
+    justify-content: flex-end;
+  `,
+})
+
+const sizeStyles = createStyleVariants<ButtonWidth>({
+  full: css`
+    flex-grow: 1;
+  `,
+  contain: css`
+    align-self: baseline;
+  `,
+})
+
 export const Pressable = styled.Pressable<PressableProp>`
-  align-self: ${({ size }) =>
-    size === 'full' ? 'stretch' : 'flex-start'};
   justify-content: center;
   align-items: center;
   border-radius: ${radius['50px']}px;
   height: ${heights['50px']}px;
   padding-left: ${spacing['25px']}px;
   padding-right: ${spacing['25px']}px;
+  ${({ size }) => sizeStyles[size as ButtonWidth]};
+  ${({ align }) => alignStyles[align as Alignment]};
   ${({ variant }) => buttonStyles[variant as Variant]};
   ${({ disabled }) => disabled && disabledButton};
 `

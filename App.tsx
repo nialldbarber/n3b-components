@@ -82,6 +82,10 @@ const ButtonScreen = () => {
         <Div />
         <Button size="contain">Hello world!</Button>
         <Div />
+        <Button size="contain" align="right">
+          Hello world!
+        </Button>
+        <Div />
         <Button variant="secondary">Hello world!</Button>
         <Div />
         <Button variant="tertiary">Hello world!</Button>

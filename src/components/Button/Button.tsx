@@ -6,7 +6,11 @@ import {
   TextContainer,
   Underline,
 } from '@olio/components/Button/styles'
-import type { Alignment, Variant } from '@olio/types'
+import type {
+  Alignment,
+  ButtonWidth,
+  Variant,
+} from '@olio/types'
 import { LoadingSpinner } from '@olio/components/LoadingSpinner'
 
 export interface PressableProp extends PressableProps {
@@ -60,7 +64,7 @@ export interface PressableProp extends PressableProps {
    * <Button size="contain" />
    * ```
    */
-  size?: 'full' | 'contain'
+  size?: ButtonWidth
   /**
    * @description
    * The children value of the button

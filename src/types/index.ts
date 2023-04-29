@@ -10,3 +10,5 @@ export type Size =
   | 'xxlarge'
 
 export type Alignment = 'left' | 'center' | 'right'
+
+export type ButtonWidth = 'full' | 'contain'

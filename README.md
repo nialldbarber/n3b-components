@@ -24,3 +24,12 @@
 
 ## General
   - [ ] `forwardRef` Some sort of wrapper?
+
+
+---
+
+# Patterns 
+## Props
+- Prefer `const` over `function`:
+  - Why?: 
+  - `const` is more concise 
