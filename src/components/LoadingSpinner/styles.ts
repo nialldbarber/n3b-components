@@ -1,10 +1,11 @@
 import { Animated } from 'react-native'
 import styled, { css } from 'styled-components/native'
-import { Mapping, getDynamicStyles } from '@olio/helpers'
-import type { LoadingSpinnerProps } from '@olio/components/LoadingSpinner/LoadingSpinner'
-import { Size } from '@olio/types'
-import { heights } from '@olio/layout/size'
-import { colors } from '@olio/color/palettes'
+
+import { colors } from '@n3b/color/palettes'
+import type { LoadingSpinnerProps } from '@n3b/components/LoadingSpinner/LoadingSpinner'
+import { getDynamicStyles, Mapping } from '@n3b/helpers'
+import { heights } from '@n3b/layout/size'
+import { Size } from '@n3b/types'
 
 /**
  * Helpers

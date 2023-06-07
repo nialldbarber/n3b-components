@@ -1,16 +1,13 @@
 import styled, { css } from 'styled-components/native'
-import { fontWeights } from '@olio/typography/font-weights'
-import type {
-  Alignment,
-  ButtonWidth,
-  Variant,
-} from '@olio/types'
-import { colors } from '@olio/color/palettes'
-import { heights, radius, spacing } from '@olio/layout/size'
-import { fontSizes } from '@olio/typography/font-sizes'
-import { Text } from '@olio/components/Text'
-import { createStyleVariants } from '@olio/helpers'
-import type { PressableProp } from '@olio/components/Button/Button'
+
+import { colors } from '@n3b/color/palettes'
+import type { PressableProp } from '@n3b/components/Button/Button'
+import { Text } from '@n3b/components/Text'
+import { createStyleVariants } from '@n3b/helpers'
+import { heights, radius, spacing } from '@n3b/layout/size'
+import type { Alignment, ButtonWidth, Variant } from '@n3b/types'
+import { fontSizes } from '@n3b/typography/font-sizes'
+import { fontWeights } from '@n3b/typography/font-weights'
 
 type TextContainerProps = Pick<PressableProp, 'variant'>
 

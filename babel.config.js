@@ -19,7 +19,7 @@ module.exports = function (api) {
             '.json',
           ],
           alias: {
-            '@olio': './src',
+            '@n3b': './src',
           },
         },
       ],

@@ -1,12 +1,13 @@
 import type { ViewProps } from 'react-native'
-import type {
-  ArticleState,
-  GenericState,
-} from '@olio/constants/article-state'
+
 import {
   Container,
   LabelText,
-} from '@olio/components/Label/styles'
+} from '@n3b/components/Label/styles'
+import type {
+  ArticleState,
+  GenericState,
+} from '@n3b/constants/article-state'
 
 /**
   type Props = {|

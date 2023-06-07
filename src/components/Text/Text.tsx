@@ -1,6 +1,7 @@
 import type { TextProps } from 'react-native'
-import type { Size, Variant } from '@olio/types'
-import { Text as SText } from '@olio/components/Text/styles'
+
+import { Text as SText } from '@n3b/components/Text/styles'
+import type { Size, Variant } from '@n3b/types'
 
 type Typography =
   | 'display'

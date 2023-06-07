@@ -1,17 +1,14 @@
 import type { ReactNode } from 'react'
 import type { PressableProps } from 'react-native'
+
 import {
-  Pressable,
   ButtonText,
+  Pressable,
   TextContainer,
   Underline,
-} from '@olio/components/Button/styles'
-import type {
-  Alignment,
-  ButtonWidth,
-  Variant,
-} from '@olio/types'
-import { LoadingSpinner } from '@olio/components/LoadingSpinner'
+} from '@n3b/components/Button/styles'
+import { LoadingSpinner } from '@n3b/components/LoadingSpinner'
+import type { Alignment, ButtonWidth, Variant } from '@n3b/types'
 
 export interface PressableProp extends PressableProps {
   /**

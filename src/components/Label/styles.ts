@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components/native'
-import type { LabelProps } from '@olio/components/Label/Label'
-import { Text } from '@olio/components/Text'
-import { colors } from '@olio/color/palettes'
-import type { System } from '@olio/color/palettes'
-import { createStyleVariants } from '@olio/helpers'
-import { fontSizes } from '@olio/typography/font-sizes'
+
+import { colors } from '@n3b/color/palettes'
+import type { System } from '@n3b/color/palettes'
+import type { LabelProps } from '@n3b/components/Label/Label'
+import { Text } from '@n3b/components/Text'
+import { createStyleVariants } from '@n3b/helpers'
+import { fontSizes } from '@n3b/typography/font-sizes'
 
 const labelBackground = createStyleVariants<System>({
   success: css`

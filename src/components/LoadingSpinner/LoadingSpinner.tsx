@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { Animated, Easing, ViewProps } from 'react-native'
-import type { Size, Variant } from '@olio/types'
+
 import {
   Container,
   Spinner,
-} from '@olio/components/LoadingSpinner/styles'
+} from '@n3b/components/LoadingSpinner/styles'
+import type { Size, Variant } from '@n3b/types'
 
 export interface LoadingSpinnerProps extends ViewProps {
   /**
@@ -48,7 +49,7 @@ export default function LoadingSpinner({
         useNativeDriver: true,
       }),
     ).start()
-  }, [])
+  }, [spinningValue])
 
   const spin = spinningValue.interpolate({
     inputRange: [0, 1],

@@ -6,7 +6,7 @@ https://example.com
 
 ## Text
 ```tsx
-import { Button } from '@Olio/Components/Atoms'
+import { Button } from '@n3b/Components/Atoms'
 
 <Button text="hello world!" />
 ```
@@ -14,7 +14,7 @@ import { Button } from '@Olio/Components/Atoms'
 ## Variant
 - `primary` | `secondary` | `tertiary`
 ```tsx
-import { Button } from '@Olio/Components/Atoms'
+import { Button } from '@n3b/Components/Atoms'
 
 <Button
   text="hello world!"

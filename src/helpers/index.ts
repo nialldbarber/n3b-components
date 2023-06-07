@@ -1,4 +1,4 @@
-import type { Size } from '@olio/types'
+import type { Size } from '@n3b/types'
 import { css } from 'styled-components/native'
 
 export type Mapping<T extends keyof any> = {
@@ -38,17 +38,17 @@ export const getDynamicStyles = (
 }
 
 /**
- * Use this for different flavours 
+ * Use this for different flavours
  * of the same style. For instance,
  * use this when you want to generate
- * styles for 'primary', 'secondary' 
+ * styles for 'primary', 'secondary'
  * or 'tertiary'; and use a pre-defined
  * type to map it
- * 
+ *
  * - Example usage
  * ```ts
  * type T = 'primary' | 'secondary' | 'tertiary'
- * 
+ *
   const buttonStyles = createStyleVariants<T>({
     primary: css``,
     secondary: css``,
