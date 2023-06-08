@@ -1,21 +1,25 @@
 import { useState } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { useFonts } from 'expo-font'
 import {
   Pressable,
   ScrollView,
   StyleSheet,
   View,
 } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { useFonts } from 'expo-font'
+
+import { Accordion } from './src/components/Accordion'
+import { AccordionItem } from './src/components/Accordion/Accordion'
 import { Button } from './src/components/Button'
-import { Text } from './src/components/Text'
 import { Label } from './src/components/Label'
+import { Text } from './src/components/Text'
 
 type RootStackParamList = {
   Home: undefined
   Buttons: undefined
   Labels: undefined
+  Accordion: undefined
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
@@ -53,6 +57,10 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Buttons" component={ButtonScreen} />
         <Stack.Screen name="Labels" component={LabelScreen} />
+        <Stack.Screen
+          name="Accordion"
+          component={AccordionScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -66,6 +74,9 @@ const HomeScreen = ({ navigation }: any) => {
       </Btn>
       <Btn onPress={() => navigation.navigate('Labels')}>
         Labels
+      </Btn>
+      <Btn onPress={() => navigation.navigate('Accordion')}>
+        Accordion
       </Btn>
     </ScrollView>
   )
@@ -113,6 +124,27 @@ const LabelScreen = () => {
         <Label status="error" label="Error!" />
         <Div />
         <Label status="warning" label="Warning!" />
+      </View>
+    </ScrollView>
+  )
+}
+
+const AccordionScreen = () => {
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>Labels</Text>
+        <Accordion>
+          <AccordionItem title="one">
+            <Text>this is one content</Text>
+          </AccordionItem>
+          <AccordionItem title="two">
+            <Text>this is two content</Text>
+          </AccordionItem>
+          <AccordionItem title="three">
+            <Text>this is three content</Text>
+          </AccordionItem>
+        </Accordion>
       </View>
     </ScrollView>
   )
