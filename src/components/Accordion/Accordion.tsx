@@ -1,6 +1,15 @@
-import React, { ReactNode, useState } from 'react'
-import { Pressable, View } from 'react-native'
+import React, {
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { Animated, Pressable, View } from 'react-native'
 
+import {
+  Container,
+  Title,
+} from '@n3b/components/Accordion/styles'
 import { Text } from '@n3b/components/Text'
 
 type Props = {
@@ -19,18 +28,12 @@ type Props = {
    * We want to create an accordion
    * It could look like this:
    * <Accordion>
-   *  <Accordion.Item title="Open me">
+   *  <AccordionItem title="Open me">
    *    Hello
-   *  </Accordion.Item>
+   *  </AccordionItem>
    * </Accordion>
    */
 }
-
-/**
- * one item needs to be open
- * by default, this should be
- * the first one
- */
 
 export default function Accordion({ children }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(
@@ -44,29 +47,25 @@ export default function Accordion({ children }: Props) {
   }
 
   return (
-    <View>
+    <Container>
       {React.Children.map(children, (child, index) =>
         React.cloneElement(child as React.ReactElement, {
           active: index === activeIndex,
           onPress: () => {
             handlePress(index)
-            console.log(
-              'index === activeIndex',
-              index === activeIndex,
-            )
           },
           index,
         }),
       )}
-    </View>
+    </Container>
   )
 }
 
 type ItemProps = {
-  title?: string
-  active?: boolean
-  children?: ReactNode
-  onPress?: () => void
+  title: string
+  active: boolean
+  children: ReactNode
+  onPress: () => void
 }
 
 export function AccordionItem({
@@ -74,13 +73,39 @@ export function AccordionItem({
   active,
   children,
   onPress,
-}: ItemProps) {
+}: Partial<ItemProps>) {
+  const heightAnimation = useRef(new Animated.Value(1)).current
+  const [itemHeight, setItemHeight] = useState<number | null>(
+    null,
+  )
+
+  const handleLayout = (e: any) => {
+    const { height } = e.nativeEvent.layout
+    setItemHeight(height)
+  }
+
+  const heightStyles = {
+    height: heightAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, active ? itemHeight : 0],
+    }),
+  }
+
+  console.log({ heightStyles, itemHeight })
+
   return (
     <Pressable onPress={onPress}>
-      <View>
-        <Text level="h2">{title}</Text>
-        {active && <View>{children}</View>}
-      </View>
+      <Container>
+        <Title>
+          <Text level="h2">{title}</Text>
+        </Title>
+        <Animated.View
+          onLayout={handleLayout}
+          style={heightStyles}
+        >
+          {children}
+        </Animated.View>
+      </Container>
     </Pressable>
   )
 }
