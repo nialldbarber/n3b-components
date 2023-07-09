@@ -10,8 +10,8 @@ import {
 } from 'react-native'
 
 import { Accordion } from './src/components/Accordion'
-import { AccordionItem } from './src/components/Accordion/Accordion'
 import { Button } from './src/components/Button'
+import { Column } from './src/components/Column'
 import { Label } from './src/components/Label'
 import { Text } from './src/components/Text'
 
@@ -105,26 +105,32 @@ const ButtonScreen = () => {
     <ScrollView>
       <View style={styles.container}>
         <Text>Buttons</Text>
-        <DebugLayout>
-          <Button>Hello world!</Button>
-        </DebugLayout>
-        <Div />
-        <Button size="contain">Hello world!</Button>
-        <Div />
-        <Button size="contain" align="right">
-          Hello world!
-        </Button>
-        <Div />
-        <Button variant="secondary">Hello world!</Button>
-        <Div />
-        <Button variant="tertiary">Hello world!</Button>
-        <Div />
-        <Button
-          isLoading={loading}
-          onPress={() => setLoading(!loading)}
-        >
-          hello
-        </Button>
+        <Column margin={50} gutter={10}>
+          <Button accessibilityHint="Poop">Hello world!</Button>
+          <Button size="contain" accessibilityHint="Poop">
+            Hello world!
+          </Button>
+          <Button
+            size="contain"
+            align="right"
+            accessibilityHint="Poop"
+          >
+            Hello world!
+          </Button>
+          <Button variant="secondary" accessibilityHint="Poop">
+            Hello world!
+          </Button>
+          <Button variant="tertiary" accessibilityHint="Poop">
+            Hello world!
+          </Button>
+          <Button
+            isLoading={loading}
+            onPress={() => setLoading(!loading)}
+            accessibilityHint="Poop"
+          >
+            hello
+          </Button>
+        </Column>
       </View>
     </ScrollView>
   )

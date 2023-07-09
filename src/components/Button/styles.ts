@@ -64,10 +64,11 @@ const alignStyles = createStyleVariants<Alignment>({
 
 const sizeStyles = createStyleVariants<ButtonWidth>({
   full: css`
-    flex-grow: 1;
+    width: 100%;
+    border-radius: 0;
   `,
   contain: css`
-    align-self: baseline;
+    width: auto;
   `,
 })
 
