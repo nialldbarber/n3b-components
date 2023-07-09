@@ -15,6 +15,22 @@ import { Button } from './src/components/Button'
 import { Label } from './src/components/Label'
 import { Text } from './src/components/Text'
 
+const DebugLayout = ({ children }: any) => {
+  return (
+    <View>
+      <View
+        style={{
+          ...StyleSheet.absoluteFillObject,
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          borderColor: 'red',
+          borderWidth: 1,
+        }}
+      />
+      {children}
+    </View>
+  )
+}
+
 type RootStackParamList = {
   Home: undefined
   Buttons: undefined
@@ -89,7 +105,9 @@ const ButtonScreen = () => {
     <ScrollView>
       <View style={styles.container}>
         <Text>Buttons</Text>
-        <Button>Hello world!</Button>
+        <DebugLayout>
+          <Button>Hello world!</Button>
+        </DebugLayout>
         <Div />
         <Button size="contain">Hello world!</Button>
         <Div />
