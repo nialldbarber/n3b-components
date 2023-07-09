@@ -8,3 +8,7 @@
   - We want to formalise typography so that it is consistent across the app 
 - ## Box
   - Start with some basic spacing
+ 
+## Components
+### Button 
+<img src="https://github.com/nialldbarber/n3b-components/assets/20539827/f83e94f4-5f4a-4919-80c2-9b4a510e2e8f" alt="button component" width="350"/>
