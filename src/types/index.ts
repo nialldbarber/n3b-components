@@ -12,3 +12,7 @@ export type Size =
 export type Alignment = 'left' | 'center' | 'right'
 
 export type ButtonWidth = 'full' | 'contain'
+
+export type VerticalAlign = 'top' | 'center' | 'bottom'
+
+export type HorizontalAlign = 'left' | 'center' | 'right'

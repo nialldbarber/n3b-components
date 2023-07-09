@@ -13,6 +13,7 @@ import { Accordion } from './src/components/Accordion'
 import { Button } from './src/components/Button'
 import { Column } from './src/components/Column'
 import { Label } from './src/components/Label'
+import { Row } from './src/components/Row'
 import { Text } from './src/components/Text'
 
 const DebugLayout = ({ children }: any) => {
@@ -131,6 +132,17 @@ const ButtonScreen = () => {
             hello
           </Button>
         </Column>
+        <Row space={{ outer: 20 }}>
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+        </Row>
       </View>
     </ScrollView>
   )

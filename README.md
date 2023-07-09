@@ -4,3 +4,7 @@
 
 ### TODO:
 - Document available components
+- ## Capsize for Text
+  - We want to formalise typography so that it is consistent across the app 
+- ## Box
+  - Start with some basic spacing
