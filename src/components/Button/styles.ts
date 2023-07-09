@@ -9,7 +9,7 @@ import type { Alignment, ButtonWidth, Variant } from '@n3b/types'
 import { fontSizes } from '@n3b/typography/font-sizes'
 import { fontWeights } from '@n3b/typography/font-weights'
 
-type TextContainerProps = Pick<PressableProp, 'variant'>
+type VariantProps = Pick<PressableProp, 'variant'>
 
 /**
  * Addtional css
@@ -84,7 +84,7 @@ export const Pressable = styled.Pressable<PressableProp>`
   ${({ disabled }) => disabled && disabledButton};
 `
 
-export const TextContainer = styled.View<TextContainerProps>`
+export const TextContainer = styled.View<VariantProps>`
   margin-bottom: ${heights['1px']}px;
 `
 
@@ -93,7 +93,7 @@ export const Underline = styled.View`
   background-color: ${colors.core.primary};
 `
 
-export const ButtonText = styled(Text)<PressableProp>`
+export const ButtonText = styled(Text)<VariantProps>`
   align-self: center;
   font-weight: ${fontWeights.semibold};
   font-family: 'Plus-Jakarta-Sans-Semi-Bold';

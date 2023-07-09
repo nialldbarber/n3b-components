@@ -73,6 +73,19 @@ export interface PressableProp extends PressableProps {
    * ```
    */
   children: ReactNode
+  /**
+   * @description
+   * The buttons accessibility label
+   * @default Button
+   */
+  accessibilityLabel?: string
+  /**
+   * @description
+   * The buttons accessibility hint
+   * Give the user a hint of what the
+   * button does!
+   */
+  accessibilityHint: string
 }
 
 export default function Button({
@@ -81,25 +94,28 @@ export default function Button({
   align = 'left',
   size = 'full',
   isLoading = false,
+  accessibilityLabel = 'Button',
+  accessibilityHint,
   ...rest
 }: PressableProp) {
-  const commonProps = {
-    variant,
-    isLoading,
-  }
   return (
     <Pressable
+      accessible
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      variant={variant}
+      isLoading={isLoading}
       align={align}
       size={size}
-      {...commonProps}
       {...rest}
     >
       <TextContainer variant={variant}>
         {isLoading ? (
-          <LoadingSpinner {...commonProps} />
+          <LoadingSpinner variant={variant} />
         ) : (
           <>
-            <ButtonText {...commonProps}>{children}</ButtonText>
+            <ButtonText variant={variant}>{children}</ButtonText>
             {variant === 'tertiary' && <Underline />}
           </>
         )}
