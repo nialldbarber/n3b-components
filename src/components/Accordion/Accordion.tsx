@@ -1,111 +1,139 @@
-import React, {
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import { Animated, Pressable, View } from 'react-native'
-
+import React, { useState } from 'react'
+import { MaterialIcons } from '@expo/vector-icons'
 import {
-  Container,
-  Title,
-} from '@n3b/components/Accordion/styles'
-import { Text } from '@n3b/components/Text'
+  Animated,
+  Easing,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native'
 
-type Props = {
-  /**
-   * @description
-   * The children value of the button
-   * @example
-   * ```tsx
-   * <Button>
-   *   <Text>Lorem Ipsum...</Text>
-   * </Button>
-   * ```
-   */
-  children: ReactNode
-  /**
-   * We want to create an accordion
-   * It could look like this:
-   * <Accordion>
-   *  <AccordionItem title="Open me">
-   *    Hello
-   *  </AccordionItem>
-   * </Accordion>
-   */
+type AccordionItemProps = {
+  title: string
+  children: React.ReactNode
 }
 
-export default function Accordion({ children }: Props) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(
-    0,
-  )
+type AccordionProps = {
+  children: React.ReactElement<AccordionItemProps>[]
+}
 
-  const handlePress = (index: number) => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === index ? null : index,
-    )
+export const AccordionItem = ({
+  title,
+  children,
+}: AccordionItemProps) => {
+  const [open, setOpen] = useState(false)
+  const bodySectionHeight = useState<number | null>(null)[0]
+
+  const bodyHeight = useState(
+    new Animated.Value(0),
+  )[0].interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, bodySectionHeight],
+  })
+
+  const arrowAngle = useState(
+    new Animated.Value(0),
+  )[0].interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0rad', `${Math.PI}rad`],
+  })
+
+  const toggleListItem = () => {
+    setOpen(!open)
   }
 
+  React.useEffect(() => {
+    const animatedController = open
+      ? Animated.timing(bodyHeight, {
+          toValue: 1,
+          duration: 300,
+          easing: Easing.bezier(0.4, 0.0, 0.2, 1),
+          useNativeDriver: false,
+        })
+      : Animated.timing(bodyHeight, {
+          toValue: 0,
+          duration: 300,
+          easing: Easing.bezier(0.4, 0.0, 0.2, 1),
+          useNativeDriver: false,
+        })
+
+    animatedController.start()
+  }, [open, bodyHeight])
+
   return (
-    <Container>
-      {React.Children.map(children, (child, index) =>
-        React.cloneElement(child as React.ReactElement, {
-          active: index === activeIndex,
-          onPress: () => {
-            handlePress(index)
-          },
-          index,
-        }),
-      )}
-    </Container>
+    <>
+      <TouchableWithoutFeedback onPress={() => toggleListItem()}>
+        <View style={styles.titleContainer}>
+          <Text>{title}</Text>
+          <Animated.View
+            style={{ transform: [{ rotateZ: arrowAngle }] }}
+          >
+            <MaterialIcons
+              name="keyboard-arrow-down"
+              size={20}
+              color="black"
+            />
+          </Animated.View>
+        </View>
+      </TouchableWithoutFeedback>
+      <Animated.View
+        style={[styles.bodyBackground, { height: bodyHeight }]}
+      >
+        <View
+          style={styles.bodyContainer}
+          onLayout={(event) => {
+            const { height } = event.nativeEvent.layout
+            bodySectionHeight(height)
+          }}
+        >
+          {children}
+        </View>
+      </Animated.View>
+    </>
   )
 }
 
-type ItemProps = {
-  title: string
-  active: boolean
-  children: ReactNode
-  onPress: () => void
-}
-
-export function AccordionItem({
-  title,
-  active,
-  children,
-  onPress,
-}: Partial<ItemProps>) {
-  const heightAnimation = useRef(new Animated.Value(1)).current
-  const [itemHeight, setItemHeight] = useState<number | null>(
+export const Accordion = ({ children }: AccordionProps) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(
     null,
   )
 
-  const handleLayout = (e: any) => {
-    const { height } = e.nativeEvent.layout
-    setItemHeight(height)
-  }
-
-  const heightStyles = {
-    height: heightAnimation.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, active ? itemHeight : 0],
-    }),
-  }
-
-  console.log({ heightStyles, itemHeight })
-
   return (
-    <Pressable onPress={onPress}>
-      <Container>
-        <Title>
-          <Text level="h2">{title}</Text>
-        </Title>
-        <Animated.View
-          onLayout={handleLayout}
-          style={heightStyles}
-        >
-          {children}
-        </Animated.View>
-      </Container>
-    </Pressable>
+    <View>
+      {children.map((child, index) =>
+        React.cloneElement(child, {
+          key: index,
+          onPress: () => setActiveIndex(index),
+          active: index === activeIndex,
+        }),
+      )}
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  bodyBackground: {
+    backgroundColor: '#EFEFEF',
+    overflow: 'hidden',
+  },
+  titleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    paddingLeft: 24,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#EFEFEF',
+  },
+  bodyContainer: {
+    padding: 16,
+    paddingLeft: 24,
+    position: 'absolute',
+    bottom: 0,
+  },
+})
+
+export default Accordion

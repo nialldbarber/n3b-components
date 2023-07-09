@@ -135,14 +135,14 @@ const AccordionScreen = () => {
       <View style={styles.container}>
         <Text>Labels</Text>
         <Accordion>
-          <AccordionItem title="one">
-            <Text>this is one content</Text>
+          <AccordionItem title="Item 1">
+            <Text>Content for Item 1</Text>
           </AccordionItem>
-          <AccordionItem title="two">
-            <Text>this is two content</Text>
+          <AccordionItem title="Item 2">
+            <Text>Content for Item 2</Text>
           </AccordionItem>
-          <AccordionItem title="three">
-            <Text>this is three content</Text>
+          <AccordionItem title="Item 3">
+            <Text>Content for Item 3</Text>
           </AccordionItem>
         </Accordion>
       </View>
