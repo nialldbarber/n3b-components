@@ -11,9 +11,6 @@ import { fontWeights } from '@n3b/typography/font-weights'
 
 type VariantProps = Pick<PressableProp, 'variant'>
 
-/**
- * Addtional css
- */
 const buttonStyles = createStyleVariants<Variant>({
   primary: css`
     background-color: ${colors.core.primary};
@@ -43,10 +40,6 @@ const textStyles = createStyleVariants<Variant>({
 const disabledButton = css`
   opacity: 0.5;
 `
-
-/**
- * Components
- */
 
 const alignStyles = createStyleVariants<Alignment>({
   left: css`

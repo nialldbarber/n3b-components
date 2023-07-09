@@ -1,20 +1,22 @@
 import styled from 'styled-components/native'
 
-import type { Props } from '@n3b/components/Column/Column'
+import type { Spacing } from '@n3b/layout/size'
 import type { ButtonWidth } from '@n3b/types'
 
 type ItemProps = {
   first?: boolean
   last?: boolean
   size?: ButtonWidth
-} & Pick<Props, 'gutter'>
+  gutter: Spacing | number
+}
 
-export const Container = styled.View<Pick<Props, 'margin'>>`
-  width: 100%;
+export const Container = styled.View<{
+  outer: Spacing | number
+}>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: ${({ margin }) => margin}px;
+  padding: ${({ outer }) => outer}px;
   background-color: rgba(255, 0, 0, 0.1);
   border: 1px solid rgba(255, 0, 0, 0.2);
 `

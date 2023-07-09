@@ -103,9 +103,9 @@ const ButtonScreen = () => {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View>
         <Text>Buttons</Text>
-        <Column margin={50} gutter={10}>
+        <Column space={{ outer: 20, gutter: 15 }}>
           <Button accessibilityHint="Poop">Hello world!</Button>
           <Button size="contain" accessibilityHint="Poop">
             Hello world!

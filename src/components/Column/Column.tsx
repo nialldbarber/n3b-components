@@ -7,19 +7,20 @@ import type { Spacing } from '@n3b/layout/size'
 import { grid } from '@n3b/layout/size'
 
 export type Props = {
-  margin?: Spacing | number
-  gutter?: Spacing | number
+  space: {
+    outer: Spacing | number
+    gutter: Spacing | number
+  }
   children: ReactNode
 }
 
 export default function Column({
-  margin = grid.margin,
-  gutter = grid.gutter,
+  space: { outer = grid.margin, gutter = grid.gutter },
   children: childProp,
 }: Props) {
   const children = flattenChildren(childProp)
   return (
-    <Container margin={margin}>
+    <Container outer={outer}>
       {Children.map(children, (child, index) => {
         const first = index === 0
         const last = index === children.length - 1
