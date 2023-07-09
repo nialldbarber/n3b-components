@@ -1,11 +1,13 @@
 import React, { Children } from 'react'
 import type { ReactNode } from 'react'
+import type { Spacing } from 'layout/size'
 import flattenChildren from 'react-flatten-children'
-import { View } from 'react-native'
 
-import { Item } from '@n3b/components/Column/styles'
+import { Container, Item } from '@n3b/components/Column/styles'
 
 type Props = {
+  margin?: Spacing | number
+  gutter?: Spacing | number
   children: ReactNode
 }
 

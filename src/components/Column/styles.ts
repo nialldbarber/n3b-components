@@ -6,5 +6,12 @@ type ItemProps = {
   gutter?: number
 }
 
-export const Container = styled.View<ItemProps>``
+type ContainerProps = {
+  margin?: number
+}
+
+export const Container = styled.View<ContainerProps>`
+  background-color: red;
+`
+
 export const Item = styled.View<ItemProps>``

@@ -83,6 +83,18 @@ export const radius = {
   '50px': 50,
 } as const
 
+export const grid = {
+  column: 70,
+  gutter: 16,
+  margin: 16,
+} as const
+
 type CustomSize = { custom: number }
 export type Width = keyof typeof widths | CustomSize
 export type Height = keyof typeof heights | CustomSize
+export type Spacing = keyof typeof spacing | CustomSize
+export type NegativeSpacing =
+  | keyof typeof negativeSpacing
+  | CustomSize
+export type Radius = keyof typeof radius | CustomSize
+export type Grid = keyof typeof grid | CustomSize
