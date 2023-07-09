@@ -17,8 +17,6 @@ export const Container = styled.View<{
   justify-content: flex-start;
   align-items: flex-start;
   margin: ${({ outer }) => outer}px;
-  background-color: rgba(255, 0, 0, 0.1);
-  border: 1px solid rgba(255, 0, 0, 0.2);
 `
 
 export const Item = styled.View<ItemProps>`

@@ -4,11 +4,7 @@ import flattenChildren from 'react-flatten-children'
 
 import { Container, Item } from '@n3b/components/Row/styles'
 import type { Spacing } from '@n3b/layout/size'
-import { grid } from '@n3b/layout/size'
-import type {
-  HorizontalAlign,
-  VerticalAlign,
-} from '@n3b/types'
+import type { HorizontalAlign, VerticalAlign } from '@n3b/types'
 
 export type Props = {
   /**
@@ -34,7 +30,7 @@ export type Props = {
 }
 
 export default function Row({
-  space: { outer = grid.margin, gutter = grid.gutter },
+  space: { outer = 0, gutter = 0 },
   verticalAlign,
   horizontalAlign,
   children: childProp,
@@ -49,16 +45,9 @@ export default function Row({
       {Children.map(children, (child, index) => {
         const first = index === 0
         const last = index === children.length - 1
-        // @ts-ignore
-        const { size } = child?.props
 
         return (
-          <Item
-            first={first}
-            last={last}
-            gutter={gutter}
-            size={size}
-          >
+          <Item first={first} last={last} gutter={gutter}>
             {child}
           </Item>
         )

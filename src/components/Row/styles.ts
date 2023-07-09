@@ -4,6 +4,18 @@ import { createStyleVariants } from '@n3b/helpers'
 import type { Spacing } from '@n3b/layout/size'
 import type { HorizontalAlign, VerticalAlign } from '@n3b/types'
 
+type ContainerProps = {
+  outer: Spacing | number
+  verticalAlign?: VerticalAlign
+  horizontalAlign?: HorizontalAlign
+}
+
+type ItemProps = {
+  first?: boolean
+  last?: boolean
+  gutter: Spacing | number
+}
+
 export const verticalAlignStyles =
   createStyleVariants<VerticalAlign>({
     top: css`
@@ -30,11 +42,7 @@ export const horizontalAlignStyles =
     `,
   })
 
-export const Container = styled.View<{
-  outer: Spacing | number
-  verticalAlign?: VerticalAlign
-  horizontalAlign?: HorizontalAlign
-}>`
+export const Container = styled.View<ContainerProps>`
   flex-direction: row;
   ${({ verticalAlign }) =>
     verticalAlign && verticalAlignStyles[verticalAlign]};
@@ -42,8 +50,11 @@ export const Container = styled.View<{
     horizontalAlign && horizontalAlignStyles[horizontalAlign]};
   margin: ${({ outer }) => outer}px;
   height: 100px;
-  background-color: rgba(255, 0, 0, 0.1);
-  border: 1px solid rgba(255, 0, 0, 0.2);
 `
 
-export const Item = styled.View<{}>``
+export const Item = styled.View<ItemProps>`
+  padding-left: ${({ first, gutter }) =>
+    gutter && (first ? 0 : gutter)}px;
+  padding-right: ${({ last, gutter }) =>
+    gutter && (last ? 0 : gutter)}px;
+`

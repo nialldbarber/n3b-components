@@ -4,7 +4,6 @@ import flattenChildren from 'react-flatten-children'
 
 import { Container, Item } from '@n3b/components/Column/styles'
 import type { Spacing } from '@n3b/layout/size'
-import { grid } from '@n3b/layout/size'
 
 export type Props = {
   /**
@@ -28,7 +27,7 @@ export type Props = {
 }
 
 export default function Column({
-  space: { outer = grid.margin, gutter = grid.gutter },
+  space: { outer, gutter },
   children: childProp,
 }: Props) {
   const children = flattenChildren(childProp)

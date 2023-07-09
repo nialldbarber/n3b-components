@@ -15,22 +15,7 @@ import { Column } from './src/components/Column'
 import { Label } from './src/components/Label'
 import { Row } from './src/components/Row'
 import { Text } from './src/components/Text'
-
-const DebugLayout = ({ children }: any) => {
-  return (
-    <View>
-      <View
-        style={{
-          ...StyleSheet.absoluteFillObject,
-          backgroundColor: 'rgba(255, 0, 0, 0.1)',
-          borderColor: 'red',
-          borderWidth: 1,
-        }}
-      />
-      {children}
-    </View>
-  )
-}
+import { DebugLayout } from './src/helpers/DebugLayout'
 
 type RootStackParamList = {
   Home: undefined
@@ -147,36 +132,40 @@ const ButtonScreen = () => {
             H
           </Button>
         </Row>
-        <Row
-          space={{ outer: 20 }}
-          verticalAlign="top"
-          horizontalAlign="left"
-        >
-          <Button variant="secondary" accessibilityHint="Poop">
-            H
-          </Button>
-          <Button variant="secondary" accessibilityHint="Poop">
-            H
-          </Button>
-          <Button variant="secondary" accessibilityHint="Poop">
-            H
-          </Button>
-        </Row>
-        <Row
-          space={{ outer: 20 }}
-          verticalAlign="center"
-          horizontalAlign="center"
-        >
-          <Button variant="secondary" accessibilityHint="Poop">
-            H
-          </Button>
-          <Button variant="secondary" accessibilityHint="Poop">
-            H
-          </Button>
-          <Button variant="secondary" accessibilityHint="Poop">
-            H
-          </Button>
-        </Row>
+        <DebugLayout>
+          <Row
+            space={{ outer: 20 }}
+            verticalAlign="top"
+            horizontalAlign="left"
+          >
+            <Button variant="secondary" accessibilityHint="Poop">
+              H
+            </Button>
+            <Button variant="secondary" accessibilityHint="Poop">
+              H
+            </Button>
+            <Button variant="secondary" accessibilityHint="Poop">
+              H
+            </Button>
+          </Row>
+        </DebugLayout>
+        <DebugLayout>
+          <Row
+            space={{ outer: 20, gutter: 12 }}
+            verticalAlign="center"
+            horizontalAlign="center"
+          >
+            <Button variant="secondary" accessibilityHint="Poop">
+              H
+            </Button>
+            <Button variant="secondary" accessibilityHint="Poop">
+              H
+            </Button>
+            <Button variant="secondary" accessibilityHint="Poop">
+              H
+            </Button>
+          </Row>
+        </DebugLayout>
       </View>
     </ScrollView>
   )
