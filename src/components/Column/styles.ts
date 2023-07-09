@@ -16,7 +16,7 @@ export const Container = styled.View<{
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: ${({ outer }) => outer}px;
+  margin: ${({ outer }) => outer}px;
   background-color: rgba(255, 0, 0, 0.1);
   border: 1px solid rgba(255, 0, 0, 0.2);
 `

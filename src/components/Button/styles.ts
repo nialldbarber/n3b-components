@@ -58,7 +58,6 @@ const alignStyles = createStyleVariants<Alignment>({
 const sizeStyles = createStyleVariants<ButtonWidth>({
   full: css`
     width: 100%;
-    border-radius: 0;
   `,
   contain: css`
     width: auto;

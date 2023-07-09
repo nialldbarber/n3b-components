@@ -7,6 +7,19 @@ import type { Spacing } from '@n3b/layout/size'
 import { grid } from '@n3b/layout/size'
 
 export type Props = {
+  /**
+   * @description
+   * The outer spacing of the column
+   * and the inner guttering between items
+   * @example
+   * ```tsx
+   * <Column space={{ outer: 20, gutter: 10 }}>
+   *  <Text>Item 1</Text>
+   *  <Text>Item 2</Text>
+   *  <Text>Item 3</Text>
+   * </Column>
+   * ```
+   */
   space: {
     outer: Spacing | number
     gutter: Spacing | number

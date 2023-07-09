@@ -1,23 +1,23 @@
 # Button
-### Link to Figma design
-https://example.com
-
 ## Example usage
 
-## Text
+## Basic
 ```tsx
-import { Button } from '@n3b/Components/Atoms'
+import { Button } from '@n3b'
 
-<Button text="hello world!" />
+<Button>
+  Hello, world!
+</Button>
 ```
 
 ## Variant
 - `primary` | `secondary` | `tertiary`
 ```tsx
-import { Button } from '@n3b/Components/Atoms'
+import { Button } from '@n3b'
 
 <Button
-  text="hello world!"
   vairant="primary"
-/>
+>
+  Hello, world!
+</Button>  
 ```
