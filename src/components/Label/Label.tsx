@@ -4,10 +4,6 @@ import {
   Container,
   LabelText,
 } from '@n3b/components/Label/styles'
-import type {
-  ArticleState,
-  GenericState,
-} from '@n3b/constants/article-state'
 
 /**
   type Props = {|
@@ -38,7 +34,7 @@ export interface LabelProps extends ViewProps {
    * <Label status="inactive" />
    * ```
    */
-  status: ArticleState | GenericState
+  status: string
 }
 
 export default function Label({ label, status }: LabelProps) {
