@@ -28,7 +28,7 @@ const Div = () => <View style={{ marginVertical: 10 }} />
 const Btn = ({ children, onPress }: any) => (
   <Pressable
     style={{
-      backgroundColor: '#261750',
+      backgroundColor: '#374259',
       padding: 20,
       margin: 20,
       borderRadius: 50,
@@ -134,17 +134,7 @@ const AccordionScreen = () => {
     <ScrollView>
       <View style={styles.container}>
         <Text>Labels</Text>
-        <Accordion>
-          <AccordionItem title="Item 1">
-            <Text>Content for Item 1</Text>
-          </AccordionItem>
-          <AccordionItem title="Item 2">
-            <Text>Content for Item 2</Text>
-          </AccordionItem>
-          <AccordionItem title="Item 3">
-            <Text>Content for Item 3</Text>
-          </AccordionItem>
-        </Accordion>
+        <Accordion />
       </View>
     </ScrollView>
   )
