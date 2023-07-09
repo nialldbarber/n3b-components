@@ -1,8 +1,11 @@
+import { useRef } from 'react'
 import type { ReactNode } from 'react'
+import { Animated, Easing } from 'react-native'
 import type { PressableProps } from 'react-native'
 
 import {
   ButtonText,
+  Container,
   Pressable,
   TextContainer,
   Underline,
@@ -98,28 +101,58 @@ export default function Button({
   accessibilityHint,
   ...rest
 }: PressableProp) {
+  const buttonScale = useRef(new Animated.Value(1)).current
+
+  const handlePressIn = () => {
+    Animated.timing(buttonScale, {
+      toValue: 0.95,
+      duration: 150,
+      easing: Easing.ease,
+      useNativeDriver: true,
+    }).start()
+  }
+
+  const handlePressOut = () => {
+    Animated.timing(buttonScale, {
+      toValue: 1,
+      duration: 150,
+      easing: Easing.ease,
+      useNativeDriver: true,
+    }).start()
+  }
+
   return (
-    <Pressable
-      accessible
-      accessibilityRole="button"
-      accessibilityLabel={accessibilityLabel}
-      accessibilityHint={accessibilityHint}
+    <Container
       variant={variant}
       isLoading={isLoading}
       align={align}
       size={size}
-      {...rest}
+      style={{
+        transform: [{ scale: buttonScale }],
+      }}
     >
-      <TextContainer variant={variant}>
-        {isLoading ? (
-          <LoadingSpinner variant={variant} />
-        ) : (
-          <>
-            <ButtonText variant={variant}>{children}</ButtonText>
-            {variant === 'tertiary' && <Underline />}
-          </>
-        )}
-      </TextContainer>
-    </Pressable>
+      <Pressable
+        accessible
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel}
+        accessibilityHint={accessibilityHint}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        {...rest}
+      >
+        <TextContainer variant={variant}>
+          {isLoading ? (
+            <LoadingSpinner variant={variant} />
+          ) : (
+            <>
+              <ButtonText variant={variant}>
+                {children}
+              </ButtonText>
+              {variant === 'tertiary' && <Underline />}
+            </>
+          )}
+        </TextContainer>
+      </Pressable>
+    </Container>
   )
 }

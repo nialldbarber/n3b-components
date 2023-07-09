@@ -1,3 +1,4 @@
+import { Animated } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 import { colors } from '@n3b/color/palettes'
@@ -64,7 +65,7 @@ const sizeStyles = createStyleVariants<ButtonWidth>({
   `,
 })
 
-export const Pressable = styled.Pressable<PressableProp>`
+export const Container = styled(Animated.View)<PressableProp>`
   justify-content: center;
   align-items: center;
   border-radius: ${radius['50px']}px;
@@ -75,6 +76,14 @@ export const Pressable = styled.Pressable<PressableProp>`
   ${({ align }) => align && alignStyles[align]};
   ${({ variant }) => variant && buttonStyles[variant]};
   ${({ disabled }) => disabled && disabledButton};
+`
+
+export const Pressable = styled.Pressable<PressableProp>`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 `
 
 export const TextContainer = styled.View<VariantProps>`
