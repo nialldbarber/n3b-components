@@ -132,7 +132,41 @@ const ButtonScreen = () => {
             hello
           </Button>
         </Column>
-        <Row space={{ outer: 20 }}>
+        <Row
+          space={{ outer: 20 }}
+          verticalAlign="bottom"
+          horizontalAlign="right"
+        >
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+        </Row>
+        <Row
+          space={{ outer: 20 }}
+          verticalAlign="top"
+          horizontalAlign="left"
+        >
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+          <Button variant="secondary" accessibilityHint="Poop">
+            H
+          </Button>
+        </Row>
+        <Row
+          space={{ outer: 20 }}
+          verticalAlign="center"
+          horizontalAlign="center"
+        >
           <Button variant="secondary" accessibilityHint="Poop">
             H
           </Button>

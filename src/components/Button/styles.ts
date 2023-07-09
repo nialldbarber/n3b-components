@@ -71,9 +71,9 @@ export const Pressable = styled.Pressable<PressableProp>`
   height: ${heights['50px']}px;
   padding-left: ${spacing['25px']}px;
   padding-right: ${spacing['25px']}px;
-  ${({ size }) => sizeStyles[size as ButtonWidth]};
-  ${({ align }) => alignStyles[align as Alignment]};
-  ${({ variant }) => buttonStyles[variant as Variant]};
+  ${({ size }) => size && sizeStyles[size]};
+  ${({ align }) => align && alignStyles[align]};
+  ${({ variant }) => variant && buttonStyles[variant]};
   ${({ disabled }) => disabled && disabledButton};
 `
 
@@ -91,5 +91,5 @@ export const ButtonText = styled(Text)<VariantProps>`
   font-weight: ${fontWeights.semibold};
   font-family: 'Plus-Jakarta-Sans-Semi-Bold';
   font-size: ${fontSizes['18px']}px;
-  ${({ variant }) => textStyles[variant as Variant]};
+  ${({ variant }) => variant && textStyles[variant]};
 `
