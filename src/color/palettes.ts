@@ -1,7 +1,7 @@
 export const core = {
   white: '#ffffff',
   black: '#252525',
-  primary: '#261750',
+  primary: '#374259',
   secondary: '#ff4c70',
 } as const
 
