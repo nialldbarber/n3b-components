@@ -2,8 +2,8 @@
 ## Example usage
 
 ## Basic
-```tsx
-import { Button } from '@n3b'
+```jsx
+import { Button } from '@n3b/components'
 
 <Button>
   Hello, world!
@@ -12,12 +12,10 @@ import { Button } from '@n3b'
 
 ## Variant
 - `primary` | `secondary` | `tertiary`
-```tsx
-import { Button } from '@n3b'
+```jsx
+import { Button } from '@n3b/components'
 
-<Button
-  vairant="primary"
->
+<Button variant="primary">
   Hello, world!
 </Button>  
 ```
