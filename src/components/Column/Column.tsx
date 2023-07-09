@@ -1,9 +1,9 @@
 import React, { Children } from 'react'
 import type { ReactNode } from 'react'
-import type { Spacing } from 'layout/size'
 import flattenChildren from 'react-flatten-children'
 
 import { Container, Item } from '@n3b/components/Column/styles'
+import type { Spacing } from '@n3b/layout/size'
 import { grid } from '@n3b/layout/size'
 
 export type Props = {
